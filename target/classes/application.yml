@@ -1,5 +1,5 @@
 server:
-  port: ${PORT}
+  port: 8080
 
 email-service:
   url: ${EMAIL_SERVICE_URL}

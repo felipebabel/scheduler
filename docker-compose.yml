@@ -1,31 +1,70 @@
-version: '3.8'
+version: "3.8"
 
 services:
   db:
     image: postgres:15
     container_name: scheduler_project_db
     environment:
-      POSTGRES_DB: scheduler_project
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
     networks:
       - scheduler_network
-    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD", "pg_isready", "-U", "admin", "-d", "scheduler_project"]
+      test: ["CMD", "pg_isready", "-U", "${POSTGRES_USER}", "-d", "${POSTGRES_DB}"]
       interval: 30s
       retries: 3
       start_period: 5s
       timeout: 10s
 
+  app1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: scheduler_app_1
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/${POSTGRES_DB}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+      CRON_EXPRESSION: ${CRON_EXPRESSION}
+      EMAIL_SERVICE_URL: ${EMAIL_SERVICE_URL}
+      EMAIL_FROM: ${EMAIL_FROM}
+      EMAIL_TO: ${EMAIL_TO}
+    ports:
+      - "8080:8080"
+    networks:
+      - scheduler_network
+
+  app2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: scheduler_app_2
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/${POSTGRES_DB}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+      CRON_EXPRESSION: ${CRON_EXPRESSION}
+      EMAIL_SERVICE_URL: ${EMAIL_SERVICE_URL}
+      EMAIL_FROM: ${EMAIL_FROM}
+      EMAIL_TO: ${EMAIL_TO}
+    ports:
+      - "8081:8080"
+    networks:
+      - scheduler_network
+
 volumes:
   postgres_data:
-    driver: local
 
 networks:
   scheduler_network:
-    driver: bridge

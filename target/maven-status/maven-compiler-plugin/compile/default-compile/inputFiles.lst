@@ -1,0 +1,7 @@
+/Users/felipebabel/Documents/GitHub/scheduler/src/main/java/com/scheduler/config/ProjectProperties.java
+/Users/felipebabel/Documents/GitHub/scheduler/src/main/java/com/scheduler/adapters/EmailApi.java
+/Users/felipebabel/Documents/GitHub/scheduler/src/main/java/com/scheduler/util/EmailDto.java
+/Users/felipebabel/Documents/GitHub/scheduler/src/main/java/com/scheduler/config/ShedLockConfig.java
+/Users/felipebabel/Documents/GitHub/scheduler/src/main/java/com/scheduler/scheduler/SendEmailScheduler.java
+/Users/felipebabel/Documents/GitHub/scheduler/src/main/java/com/scheduler/SchedulerApplication.java
+/Users/felipebabel/Documents/GitHub/scheduler/src/main/java/com/scheduler/service/SendEmail.java
