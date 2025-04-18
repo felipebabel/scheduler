@@ -1,0 +1,17 @@
+server:
+  port: ${PORT}
+
+email-service:
+  url: ${EMAIL_SERVICE_URL}
+  from: ${EMAIL_FROM}
+  to: ${EMAIL_TO}
+
+swagger:
+  api:
+    title: Send Scheduled Email
+    Description: This project sends scheduled emails using Shedlock, Spring Scheduler, Feign Client, and H2 Database for distributed task locking across multiple instances, cron-based scheduling, external service communication, and in-memory task storage.
+
+scheduler:
+  cron-expression: ${CRON_EXPRESSION}
+
+

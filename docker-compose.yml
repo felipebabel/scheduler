@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    container_name: scheduler_project_db
+    environment:
+      POSTGRES_DB: scheduler_project
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - scheduler_network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "admin", "-d", "scheduler_project"]
+      interval: 30s
+      retries: 3
+      start_period: 5s
+      timeout: 10s
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  scheduler_network:
+    driver: bridge
