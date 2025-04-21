@@ -1,0 +1,59 @@
+name: Checkstyle Validation
+
+on:
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  Checkstyle:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Cache Maven dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Run Maven Checkstyle
+        run: mvn clean verify
+
+      - name: Generate Checkstyle Report (HTML)
+        run: mvn checkstyle:checkstyle
+
+      - name: Upload Checkstyle HTML report
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkstyle-report-html
+          path: target/site/checkstyle.html
+
+      - name: Upload Checkstyle XML report
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkstyle-report-xml
+          path: target/checkstyle-*.xml
+
+      - name: Check for Checkstyle violations
+        run: |
+          if grep -q "Checkstyle violation" target/checkstyle-*.xml; then
+            echo "Checkstyle violations found!";
+            exit 1; 
+          else
+            echo "No Checkstyle violations found";
+          fi
+
+      
+

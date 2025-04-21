@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.29">
+<file name="/Users/felipebabel/Documents/GitHub/scheduler/src/main/java/com/scheduler/util/EmailDto.java">
+</file>
+<file name="/Users/felipebabel/Documents/GitHub/scheduler/src/main/java/com/scheduler/config/ProjectProperties.java">
+</file>
+<file name="/Users/felipebabel/Documents/GitHub/scheduler/src/main/java/com/scheduler/config/ShedLockConfig.java">
+</file>
+<file name="/Users/felipebabel/Documents/GitHub/scheduler/src/main/java/com/scheduler/scheduler/SendEmailScheduler.java">
+</file>
+<file name="/Users/felipebabel/Documents/GitHub/scheduler/src/main/java/com/scheduler/adapters/EmailApi.java">
+</file>
+<file name="/Users/felipebabel/Documents/GitHub/scheduler/src/main/java/com/scheduler/SchedulerApplication.java">
+</file>
+<file name="/Users/felipebabel/Documents/GitHub/scheduler/src/main/java/com/scheduler/service/SendEmail.java">
+</file>
+<file name="/Users/felipebabel/Documents/GitHub/scheduler/src/main/resources/application.properties">
+</file>
+</checkstyle>

@@ -1,1 +1,3 @@
+com/scheduler/service/SendEmailTest.class
 com/scheduler/SchedulerApplicationTests.class
+com/scheduler/scheduler/SendEmailSchedulerTest.class
