@@ -20,7 +20,7 @@ public class SendEmail {
 
     public EmailDto sendEmail(final EmailDto emailDto) {
         LOGGER.info("Sending scheduled email");
-        //emailApi.sendEmail(emailDto);
+        emailApi.sendEmail(emailDto);
         LOGGER.info("Email scheduled sent");
         return emailDto;
     }

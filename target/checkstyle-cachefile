@@ -1,0 +1,10 @@
+#Mon Apr 21 16:53:51 BRT 2025
+/Users/felipebabel/Documents/GitHub/scheduler/src/main/java/com/scheduler/SchedulerApplication.java=1745260270910
+/Users/felipebabel/Documents/GitHub/scheduler/src/main/java/com/scheduler/adapters/EmailApi.java=1745262502937
+/Users/felipebabel/Documents/GitHub/scheduler/src/main/java/com/scheduler/config/ProjectProperties.java=1744843661556
+/Users/felipebabel/Documents/GitHub/scheduler/src/main/java/com/scheduler/config/ShedLockConfig.java=1745260360146
+/Users/felipebabel/Documents/GitHub/scheduler/src/main/java/com/scheduler/scheduler/SendEmailScheduler.java=1745260346740
+/Users/felipebabel/Documents/GitHub/scheduler/src/main/java/com/scheduler/service/SendEmail.java=1745258767676
+/Users/felipebabel/Documents/GitHub/scheduler/src/main/java/com/scheduler/util/EmailDto.java=1744848151906
+/Users/felipebabel/Documents/GitHub/scheduler/src/main/resources/application.properties=1745260270905
+configuration*?=9F2F84657BEC0E2BC04C6079B059F226592F63B8
